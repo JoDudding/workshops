@@ -24,7 +24,7 @@ library(dplyr)
 
 # download data -----------------------------------------------------------
 
-data_path <- here::here("data/nyc-taxi")
+data_path <- here::here("arrow-workshop/data/nyc-taxi")
 
 open_dataset("s3://voltrondata-labs-datasets/nyc-taxi") |>
   filter(year %in% 2012:2021) |>
@@ -36,24 +36,24 @@ open_dataset(data_path) |>
 options(timeout = 3600)
 download.file(
   url = "https://r4ds.s3.us-west-2.amazonaws.com/seattle-library-checkouts.csv",
-  destfile = here::here("data/seattle-library-checkouts.csv")
+  destfile = here::here("arrow-workshop/data/seattle-library-checkouts.csv")
 )
 
 options(timeout = 1800)
 download.file(
   url = "https://github.com/posit-conf-2023/arrow/releases/download/v0.1.0/taxi_zone_lookup.csv",
-  destfile = here::here("data/taxi_zone_lookup.csv")
+  destfile = here::here("arrow-workshop/data/taxi_zone_lookup.csv")
 )
 
 download.file(
   url = "https://github.com/posit-conf-2023/arrow/releases/download/v0.1.0/taxi_zones.zip",
-  destfile = here::here("data/taxi_zones.zip")
+  destfile = here::here("arrow-workshop/data/taxi_zones.zip")
 )
 
 # Extract the spatial files from the zip folder:
 unzip(
-  zipfile = here::here("data/taxi_zones.zip"),
-  exdir = here::here("data/taxi_zones")
+  zipfile = here::here("arrow-workshop/data/taxi_zones.zip"),
+  exdir = here::here("arrow-workshop/data/taxi_zones")
 )
 
 #-------------------------------------------------------------------------------

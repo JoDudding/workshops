@@ -10,7 +10,7 @@ library(dplyr)
 library(cli)
 library(duckdb)
 
-nyc_taxi <- open_dataset(here::here("data/nyc-taxi"))
+nyc_taxi <- open_dataset(here::here("arrow-workshop/data/nyc-taxi"))
 
 nrow(nyc_taxi)
 
@@ -83,7 +83,7 @@ nyc_taxi |>
 #' by Arrow.
 
 seattle_csv <- open_dataset(
-  sources = here::here("data/seattle-library-checkouts.csv"),
+  sources = here::here("arrow-workshop/data/seattle-library-checkouts.csv"),
   format = "csv",
   skip = 1,
   schema = schema(
@@ -124,7 +124,7 @@ toc()
 #' data saved to disk as a single, Parquet file. Did you notice a difference in
 #' compute time?
 
-seattle_parquet <- here::here("data/seattle-library-checkouts-parquet")
+seattle_parquet <- here::here("arrow-workshop/data/seattle-library-checkouts-parquet")
 
 seattle_csv |>
   write_dataset(path = seattle_parquet, format = "parquet")
@@ -146,7 +146,7 @@ toc()
 #' more time! This time, write the data partitioned by CheckoutType as Parquet
 #' files.
 
-seattle_parquet_part <- here::here("data/seattle-library-checkouts")
+seattle_parquet_part <- here::here("arrow-workshop/data/seattle-library-checkouts")
 
 seattle_csv |>
   group_by(CheckoutType) |>
@@ -179,7 +179,7 @@ toc()
 #' Read in a single NYC Taxi parquet file using read_parquet() as an Arrow Table
 
 taxi_single <- read_parquet(
-  "data/nyc-taxi/year=2019/month=9/part-0.parquet",
+  "arrow-workshop/data/nyc-taxi/year=2019/month=9/part-0.parquet",
   as_data_frame = FALSE
 )
 
@@ -241,7 +241,7 @@ nyc_taxi |>
 #' use stringr::str_detect() to help you find pickup zones with the word
 #' “Airport” in them)
 
-nyc_taxi_zones <- read_csv_arrow(here::here("data/taxi_zone_lookup.csv")) |>
+nyc_taxi_zones <- read_csv_arrow(here::here("arrow-workshop/data/taxi_zone_lookup.csv")) |>
   select(location_id = LocationID, borough = Borough, zone = Zone)
 
 nyc_taxi_zones_arrow <- arrow_table(
@@ -289,7 +289,7 @@ library(janitor)
 library(stringr)
 
 nyc_taxi_zones <- read_csv_arrow(
-  here::here("data/taxi_zone_lookup.csv"),as_data_frame = FALSE
+  here::here("arrow-workshop/data/taxi_zone_lookup.csv"),as_data_frame = FALSE
 ) |>
   clean_names()
 
@@ -301,7 +301,7 @@ dropoff_zones <- nyc_taxi_zones |>
   select(dropoff_location_id = location_id, dropoff_zone = zone) |>
   compute()
 
-airport_pickups <- open_dataset(here::here("data/nyc-taxi")) |>
+airport_pickups <- open_dataset(here::here("arrow-workshop/data/nyc-taxi")) |>
   filter(pickup_location_id %in% airport_zones) |>
   select(
     matches("datetime"),
@@ -312,7 +312,7 @@ airport_pickups <- open_dataset(here::here("data/nyc-taxi")) |>
   arrange(desc(n)) |>
   collect()
 
-map <- read_sf(here::here("data/taxi_zones/taxi_zones.shp")) |>
+map <- read_sf(here::here("arrow-workshop/data/taxi_zones/taxi_zones.shp")) |>
   clean_names() |>
   left_join(airport_pickups, by = c("zone" = "dropoff_zone")) |>
   arrange(desc(n))

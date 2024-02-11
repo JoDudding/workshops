@@ -24,7 +24,7 @@ library(dplyr)
 
 # download data -----------------------------------------------------------
 
-data_path <- here::here("data/nyc-taxi")
+data_path <- here::here("arrow-workshop/data/nyc-taxi")
 
 open_dataset("s3://voltrondata-labs-datasets/nyc-taxi") |>
   filter(year %in% 2012:2021) |>
@@ -52,8 +52,8 @@ download.file(
 
 # Extract the spatial files from the zip folder:
 unzip(
-  zipfile = here::here("data/taxi_zones.zip"),
-  exdir = here::here("data/taxi_zones")
+  zipfile = here::here("arrow-workshop/data/taxi_zones.zip"),
+  exdir = here::here("arrow-workshop/data/taxi_zones")
 )
 
 #-------------------------------------------------------------------------------
