@@ -6,9 +6,11 @@
 This repo is for the exercises for online R/Quarto workshops. Those
 workshops include:
 
-Done:
+Doing / Done:
 
 - [Big Data in R with Arrow](https://posit-conf-2023.github.io/arrow/)
+- [Steal like an Rtist: Creative Coding in
+  R](https://github.com/posit-conf-2023/creative-coding)
 
 To do:
 
@@ -18,8 +20,6 @@ To do:
   R](https://github.com/posit-conf-2023/wtf/)
 - [Designing Data Visualizations to Successfully Tell a
   Story](https://posit-conf-2023.github.io/dataviz-storytelling/)
-- [Steal like an Rtist: Creative Coding in
-  R](https://github.com/posit-conf-2023/creative-coding)
 - [Engaging and Beautiful Data Visualizations with
   ggplot2](https://posit-conf-2023.github.io/dataviz-ggplot2/)
 - [From R User to R
@@ -38,27 +38,29 @@ The listing for RStudio/Posit conferences are below:
 
     .
     ├── arrow-workshop
-    │   └── data
-    │       ├── nyc-taxi
-    │       │   ├── year=2012
-    │       │   ├── year=2013
-    │       │   ├── year=2014
-    │       │   ├── year=2015
-    │       │   ├── year=2016
-    │       │   ├── year=2017
-    │       │   ├── year=2018
-    │       │   ├── year=2019
-    │       │   ├── year=2020
-    │       │   └── year=2021
-    │       ├── seattle-library-checkouts
-    │       │   ├── CheckoutType=Freegal
-    │       │   ├── CheckoutType=Hoopla
-    │       │   ├── CheckoutType=Horizon
-    │       │   ├── CheckoutType=OverDrive
-    │       │   └── CheckoutType=Zinio
-    │       ├── seattle-library-checkouts-parquet
-    │       └── taxi_zones
     ├── devops
     ├── r-programmer
     ├── steal-like-artist
+    │   ├── code
+    │   ├── exercises
+    │   │   ├── 02-homage-to-the-square
+    │   │   ├── 03-ot
+    │   │   │   ├── letters
+    │   │   │   └── letters_solutions
+    │   │   ├── 04-riso-grids
+    │   │   └── 05-infinite-truchet
+    │   │       └── truchet_tiles_examples
+    │   └── images
     └── what-they-forgot
+
+## Notes
+
+The large amount of data used in the Arrow workshop has been moved to
+`C:\Users\jmdud\Documents (local)\data` (so it won’t be synced with
+OneDrive), and put in the `.gitignore`.
+
+## Steal like an artist
+
+![](steal-like-artist/images/homage_klimt_1919.png)
+
+![](steal-like-artist/images/j-shape-ol.png)

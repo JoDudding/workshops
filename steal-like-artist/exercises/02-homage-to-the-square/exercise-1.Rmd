@@ -1,0 +1,117 @@
+---
+title: 'Steal like an Rtist: Creative Coding in R'
+subtitle: '02 - Homage to the Square Exercise 1'
+output: html_document
+---
+
+# Exercise 1
+
+## Part 1
+
+Update the function `make_homage()` to take a `seed` argument, and set the seed in the body of the function
+
+```{r ex-1-1}
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+
+make_homage <- function(
+    seed = 1,
+    colors = c("#5A9CBA", "#919EA3", "#F1EFDF", "#F5BB1D")
+  ) {
+  set.seed(seed)
+  
+  tribble(
+    ~x0, ~y0, ~size,
+    0, 0, 10,
+    1, 0.5, 8,
+    2, 1, 6,
+    3, 1.5, 4
+  ) %>%
+    mutate(
+      x1 = x0 + size,
+      y1 = y0 + size,
+      color = sample(colors, size = 4)
+    ) %>%
+    ggplot() +
+    geom_rect(aes(
+      xmin = x0, xmax = x1,
+      ymin = y0, ymax = y1,
+      fill = color
+    )) +
+    scale_fill_identity() +
+    coord_fixed(expand = FALSE) +
+    theme_void()
+}
+
+make_homage(19091991, colors = c("#5F187F", "#FF823E", "#FFFFE0", "#B486D4"))
+```
+
+What happens if there is no value given to `seed` in the function?
+
+```{r ex-1-2}
+make_homage()
+```
+
+## Part 2
+
+Verify that running `make_homage()` with the same `seed` creates the same output, and that with a different seeds creates different outputs
+
+```{r ex-1-3}
+mh1 <- make_homage(19091991, colors = c("#5F187F", "#FF823E", "#FFFFE0", "#B486D4"))
+mh2 <- make_homage(19, colors = c("#5F187F", "#FF823E", "#FFFFE0", "#B486D4"))
+mh3 <- make_homage(91, colors = c("#5F187F", "#FF823E", "#FFFFE0", "#B486D4"))
+mh4 <- make_homage(9, colors = c("#5F187F", "#FF823E", "#FFFFE0", "#B486D4"))
+
+(mh1 + mh2) / (mh3 + mh4)
+
+```
+
+## Part 3
+
+Share an output and the seed that created it in the GitHub discussion for this exercise! https://github.com/posit-conf-2023/creative-coding/discussions/2
+
+Inspiration was Klimt's The Kiss
+
+```{r ex-1-4}
+library(glue)
+
+klimt_kiss <- c('#7c6739', '#ca8d32', '#8f6d2c', '#81682d', '#f2b949')
+
+klimt_seed <- 1919
+klimt_homage <- make_homage(klimt_seed, colors = klimt_kiss)
+
+klimt_homage
+
+ggsave(
+  filename = here::here(
+    'steal-like-artist', 
+    "images", 
+    glue("homage_klimt_{klimt_seed}.png")
+  ),
+  plot = klimt_homage,
+  width = 5, height = 5
+)
+```
+
+Inspiration was Hokusai's The Great Wave off Kanagawa
+
+```{r ex-1-5}
+
+great_wave <- c('#080d53', '#c5bfae', '#e7cdab', '#86a8b4', '#686450')
+
+wave_seed <- 91911
+wave_homage <- make_homage(wave_seed, colors = great_wave)
+
+wave_homage
+
+ggsave(
+  filename = here::here(
+    'steal-like-artist', 
+    "images", 
+    glue("homage_great_wave_{wave_seed}.png")
+  ),
+  plot = wave_homage,
+  width = 5, height = 5
+)
+```

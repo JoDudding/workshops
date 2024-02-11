@@ -11,16 +11,16 @@ execute:
 
 This repo is for the exercises for online R/Quarto workshops. Those workshops include:
 
-Done:
+Doing / Done:
 
--   [Big Data in R with Arrow](https://posit-conf-2023.github.io/arrow/)
+- [Big Data in R with Arrow](https://posit-conf-2023.github.io/arrow/)
+- [Steal like an Rtist: Creative Coding in R](https://github.com/posit-conf-2023/creative-coding)
 
 To do:
 
 - [DevOps for Data Scientist](https://github.com/posit-conf-2023/devops/)
 - [What They Forgot to Teach You About R](https://github.com/posit-conf-2023/wtf/)
 - [Designing Data Visualizations to Successfully Tell a Story](https://posit-conf-2023.github.io/dataviz-storytelling/)
-- [Steal like an Rtist: Creative Coding in R](https://github.com/posit-conf-2023/creative-coding)
 - [Engaging and Beautiful Data Visualizations with ggplot2](https://posit-conf-2023.github.io/dataviz-ggplot2/)
 - [From R User to R Programmer](https://posit-conf-2023.github.io/programming-r/)
 - [Fundamentals of Package Development](https://posit-conf-2023.github.io/pkg-dev/)
@@ -42,3 +42,12 @@ dir_tree(recurse = 3, type = 'directory')
 
 ```
 
+## Notes
+
+The large amount of data used in the Arrow workshop has been moved to `C:\Users\jmdud\Documents (local)\data` (so it won't be synced with OneDrive), and put in the `.gitignore`.
+
+## Steal like an artist
+
+![](steal-like-artist/images/homage_klimt_1919.png)
+
+![](steal-like-artist/images/j-shape-ol.png)
