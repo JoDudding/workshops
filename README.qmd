@@ -1,6 +1,6 @@
 ---
 title: "Workshops"
-output: qmd
+format: gfm
 execute: 
   echo: false
   warning: false
